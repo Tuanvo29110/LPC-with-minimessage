@@ -33,12 +33,7 @@ public class LPCCommand implements CommandExecutor, TabCompleter {
             plugin.reloadConfig();
             String rawReloadMessage = plugin.getConfig().getString("reload-message", "<green>Reloaded LPC Configuration!</green>");
             Component message = MiniMessage.miniMessage().deserialize(rawReloadMessage);
-
-            if (plugin.getServer().getName().toLowerCase().contains("paper")) {
-                sender.sendMessage(message);
-            } else {
-                sender.sendMessage(LPC.getLegacySerializer().serialize(message));
-            }
+            sender.sendMessage(message);
             return true;
         }
         return false;
