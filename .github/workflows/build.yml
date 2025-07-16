@@ -2,6 +2,7 @@ name: Build plugin
 
 on:
   push:
+  workflow_dispatch:
 
 jobs:
   build:
@@ -17,14 +18,21 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
+      - name: Generate gradle wrapper if missing
+        run: |
+          if [ ! -f "./gradlew" ]; then
+            echo "Gradle wrapper not found, generating..."
+            gradle wrapper
+          fi
+
       - name: Grant permission to gradlew
         run: chmod +x ./gradlew
 
-      - name: Build ShadowJar
-        run: ./gradlew shadowJar
+      - name: Build plugin
+        run: ./gradlew clean shadowJar
 
-      - name: Upload ShadowJar artifact
+      - name: Upload built jar
         uses: actions/upload-artifact@v4
         with:
           name: LPC-Minimessage
-          path: "*"
+          path: build/libs/*.jar
