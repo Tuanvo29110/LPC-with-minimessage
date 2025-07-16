@@ -26,8 +26,6 @@ dependencies {
     compileOnly "io.papermc.paper:paper-api:$paper"
     compileOnly "net.luckperms:api:$luckpermsapi"
     compileOnly "me.clip:placeholderapi:$papi"
-    implementation "net.kyori:adventure-platform-bukkit:$platformbukkit"
-    implementation "net.kyori:adventure-text-minimessage:$adventure"
 }
 
 shadowJar {
