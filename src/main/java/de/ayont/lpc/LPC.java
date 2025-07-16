@@ -2,7 +2,6 @@ package de.ayont.lpc;
 
 import de.ayont.lpc.commands.LPCCommand;
 import de.ayont.lpc.listener.AsyncChatListener;
-import de.ayont.lpc.listener.SpigotChatListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
